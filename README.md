@@ -31,16 +31,21 @@ Before you begin, ensure you have the following prerequisites installed:
    ```bash
    git clone https://github.com/yourusername/video-sharing-project.git
    cd video-sharing-project
+
 2. Install the project's dependencies:
+
     ```bash
     npm install
     ```
+
 ### Running the Server
 
     To start the backend server, run the following command:
+
     ```bash
     node index.js or nodemon index.js
     ```
+
     The server will start on
 
 ### Uploading Videos
@@ -54,7 +59,7 @@ Before you begin, ensure you have the following prerequisites installed:
 ### Project Structure
 
     The project has the following structure:
-    ```perl
+
     backend/
     │
     ├── node_modules/         # Dependencies
@@ -70,7 +75,7 @@ Before you begin, ensure you have the following prerequisites installed:
     └── play_video.html       # HTML file for video playback
     
     ── README.md             # Project documentation
-    ```
+    
 
 
 ### Contributing
