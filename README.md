@@ -29,7 +29,7 @@ Before you begin, ensure you have the following prerequisites installed:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/video-sharing-project.git
+   git clone https://github.com/OluwatuyiAbiola/hngstage5.git
    cd video-sharing-project
 
 2. Install the project's dependencies:
@@ -50,11 +50,11 @@ Before you begin, ensure you have the following prerequisites installed:
 
 ### Uploading Videos
 
-    You can upload videos to the server by making a POST request to /upload with the video file. You can use tools like curl, Postman, or create a frontend interface to facilitate video uploads.
+    You can upload videos to the server by making a POST request to https://backendchromeextention.onrender.com/upload with the video file. You can use tools like curl, Postman, or create a frontend interface to facilitate video uploads.
 
 ### Retrieving and Playing Videos
 
-    To retrieve and play videos, you can use the provided /play route. Access the video playback page by visiting a URL like http://localhost:3000/play?filename=my_video.mp4, where my_video.mp4 is the name of the video you want to play.
+    To retrieve and play videos, you can use the provided /play route. Access the video playback page by visiting a URL like https://backendchromeextention.onrender.com/play?filename=my_video.mp4, where my_video.mp4 is the name of the video you want to play.
 
 ### Project Structure
 
