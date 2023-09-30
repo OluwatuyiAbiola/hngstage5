@@ -29,14 +29,20 @@ app.post('/upload', upload.single('video'), async(req, res) => {
           success : false,
           message: 'No video file uploaded'
         });
-      } 
+      }
+      const filePath = path.join(__dirname, 'uploads');
+      //Create the 'download folder if it doesnt exist'
+      fs.ensureDirSync(filePath); 
       const videoFileName = req.file.filename;
       const videoUrl = `/uploads/${videoFileName}`;
+      //save the uploaded file to ''uploads folder
+      //const videoPath = path.join(filepath, `${videoFileName}`);
+      fs.writeFileSync(filePathPath, videoFileName);
       res.status(200).json({
         url: videoUrl,
         size: req.file.size,
         otherUrl: req.file.path,
-        filename: videoFileName
+        filename: videoFileName,
       });
     } catch (error) {
       return res.status(500).json({
@@ -52,7 +58,7 @@ app.post('/upload', upload.single('video'), async(req, res) => {
 app.get('/videos/:filename', (req, res) => {
     const { filename } = req.params;
     const filePath = path.join(__dirname, 'uploads', filename);
-  
+    console.log('Video path is', filePath);
     // Check if the file exists
     if (fs.existsSync(filePath)) {
       const videoStream = fs.createReadStream(filePath);
@@ -80,7 +86,7 @@ app.get('/play', (req, res) => {
   // ...
   
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
