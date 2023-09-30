@@ -22,13 +22,29 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Define a route for video uploads
-app.post('/upload', upload.single('video'), (req, res) => {
-    if(err){
-        res.json({message: err});
-    } else{
-        res.status(200).json({ message: 'Video uploaded successfully' });
+app.post('/upload', upload.single('video'), async(req, res) => {
+    try {
+      if(!req.file){
+        return res.status(400).json({
+          success : false,
+          message: 'No video file uploaded'
+        });
+      } 
+      const videoFileName = req.file.filename;
+      const videoUrl = `/uploads/${videoFileName}`;
+      res.status(200).json({
+        url: videoUrl,
+        size: req.file.size,
+        otherUrl: req.file.path,
+        filename: videoFileName
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: 'Server error'
+      });
     }
-  
+    
 });
 
 
