@@ -39,7 +39,7 @@ app.post('/upload', upload.single('video'), async(req, res) => {
       const videoUrl = `/uploads/${videoFileName}`;
       //save the uploaded file to ''uploads folder
       //const videoPath = path.join(filepath, `${videoFileName}`);
-      fs.writeFileSync(filePathPath, videoFileName);
+      //fs.writeFileSync(filePathPath, videoFileName);
       res.status(200).json({
         url: videoUrl,
         size: req.file.size,
