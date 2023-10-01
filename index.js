@@ -1,13 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
-const fs = require('fs');
+const shortid = require('shortid');
+const fs = require('fs-extra');
 const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+app.use(express.json);
 
 // Set up multer for video uploads
 const storage = multer.diskStorage({
@@ -30,9 +32,9 @@ app.post('/upload', upload.single('video'), async(req, res) => {
           message: 'No video file uploaded'
         });
       }
-      const filePath = path.join(__dirname, 'uploads');
+      //const filePath = path.join(__dirname, 'uploads');
       //Create the 'download folder if it doesnt exist'
-      fs.ensureDirSync(filePath); 
+      //fs.ensureDirSync(filePath); 
       const videoFileName = req.file.filename;
       const videoUrl = `/uploads/${videoFileName}`;
       //save the uploaded file to ''uploads folder
@@ -45,6 +47,7 @@ app.post('/upload', upload.single('video'), async(req, res) => {
         filename: videoFileName,
       });
     } catch (error) {
+      console.error('Error uploading video: ', error)
       return res.status(500).json({
         success: false,
         message: 'Server error'
